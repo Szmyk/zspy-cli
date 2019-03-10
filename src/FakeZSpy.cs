@@ -23,7 +23,22 @@ namespace zspy_cli
 
                 var message = data.lpData;
 
-                Console.WriteLine(message);
+                if (message.StartsWith("Fatal:"))
+                {
+                    Logger.Fatal(message);
+                }
+                else if (message.StartsWith("Warn:"))
+                {
+                    Logger.Warning(message);
+                }
+                else if (message.StartsWith("Fault:"))
+                {
+                    Logger.Fault(message);
+                }
+                else
+                {
+                    Logger.Information(message);
+                }
             }
 
             base.WndProc(ref m);
