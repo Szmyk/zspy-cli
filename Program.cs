@@ -1,10 +1,23 @@
-﻿namespace zspy_cli
+﻿using System.Threading;
+using System.Windows.Forms;
+
+namespace zspy_cli
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-           
+            var zSpyWindowThread = new Thread(() =>
+            {
+                Application.Run(new FakeZSpy
+                {
+                    Text = "[zSpy]"
+                });
+            });
+
+            zSpyWindowThread.Start();
+
+            zSpyWindowThread.Join();
         }
     }
 }
