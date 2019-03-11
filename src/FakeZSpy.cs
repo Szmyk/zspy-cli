@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
@@ -33,19 +33,19 @@ namespace zspy_cli
 
                 if (message.StartsWith("Fatal:"))
                 {
-                    Logger.Fatal(message);
+                    Program.Logger.Fatal(message);
                 }
                 else if (message.StartsWith("Warn:"))
                 {
-                    Logger.Warning(message);
+                    Program.Logger.Warning(message);
                 }
                 else if (message.StartsWith("Fault:"))
                 {
-                    Logger.Fault(message);
+                    Program.Logger.Fault(message);
                 }
                 else
                 {
-                    Logger.Information(message);
+                    Program.Logger.Information(message);
                 }
             }
 
