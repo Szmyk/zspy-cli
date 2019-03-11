@@ -18,6 +18,10 @@ namespace zspy_cli
                 {
                     Logger = new LoggerWithHighlighting(options.Highlight);
                 }
+                else if (options.Filter != null)
+                {
+                    Logger = new LoggerWithFiltering(options.Filter);                
+                }
                 else
                 {
                     Logger = new Logger();

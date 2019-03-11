@@ -6,5 +6,8 @@ namespace zspy_cli
     {
         [Option('h', "highlight")]
         public string Highlight { get; set; }
+
+        [Option('f', "filter")]
+        public string Filter { get; set; }
     }
 }

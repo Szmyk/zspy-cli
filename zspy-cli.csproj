@@ -47,6 +47,7 @@
     </Compile>
     <Compile Include="src\ILogger.cs" />
     <Compile Include="src\Logger.cs" />
+    <Compile Include="src\LoggerWithFiltering.cs" />
     <Compile Include="src\LoggerWithHighlighting.cs" />
     <Compile Include="src\Options.cs" />
     <Compile Include="src\Program.cs" />
