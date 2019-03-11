@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
@@ -15,9 +15,17 @@ namespace zspy_cli
 
     public class FakeZSpy : Form
     {
+        private bool gothicHasStarted;
+
         protected override void WndProc(ref Message m)
         {
-            if (m.Msg == 0x4A) //WM_COPYDATA
+            if (!gothicHasStarted && m.Msg == 0x6) //WM_ACTIVATE
+            {
+                Console.WriteLine("Gothic started.");
+
+                gothicHasStarted = true;
+            }
+            else if (m.Msg == 0x4A) //WM_COPYDATA
             {
                 var data = (CopyData)m.GetLParam(typeof(CopyData));
 
