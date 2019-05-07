@@ -91,9 +91,11 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 int main(int argc, char *argv[])
 {
 	args::ArgumentParser parser("zSpy in command line.");
+
 	args::HelpFlag help(parser, "help", "", { 'h', "help" });
 	args::ValueFlag<std::string> textToFilter(parser, "text", "", { "filter" });
 	args::ValueFlag<std::string> textToHighlight(parser, "text", "", { "highlight" });
+	args::ValueFlagList<std::string> messages(parser, "all|information|warning|fault|fatal", "default: all", { "messages" }, { "all" });
 
 	try
 	{
@@ -118,15 +120,15 @@ int main(int argc, char *argv[])
 
 	if (args::get(textToFilter).empty() == false)
 	{
-		logger = new LoggerWithFiltering(args::get(textToFilter));
+		logger = new LoggerWithFiltering(args::get(textToFilter), args::get(messages));
 	}
 	else if (args::get(textToHighlight).empty() == false)
 	{
-		logger = new LoggerWithHighlighting(args::get(textToHighlight));
+		logger = new LoggerWithHighlighting(args::get(textToHighlight), args::get(messages));
 	}
 	else
 	{
-		logger = new Logger;
+		logger = new Logger(args::get(messages));
 	}
 
 	if (!registerFakeZSpyClass())

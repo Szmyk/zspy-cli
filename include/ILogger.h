@@ -3,35 +3,20 @@
 #include <include/rang.hpp>
 
 #include <iostream>
+#include <vector>
 
 class ILogger
 {
 	public:
-		void Information(std::string message)
-		{
-			performWriteLine(message, rang::fg::reset);
-		}
-
-		void Warning(std::string message)
-		{
-			performWriteLine(message, rang::fg::green);
-		}
-
-		void Fault(std::string message)
-		{
-			performWriteLine(message, rang::fg::red);
-		}
-
-		void Fatal(std::string message)
-		{
-			performWriteLine(message, rang::fg::magenta);
-		}
-
+		void Information(std::string message);
+		void Warning(std::string message);
+		void Fault(std::string message);
+		void Fatal(std::string message);
+		
 	protected:
-		void writeLine(std::string message, rang::fg color)
-		{
-			std::cout << color << message.c_str() << rang::style::reset << std::endl;
-		}
+		void writeLine(std::string message, rang::fg color);
+		
+		std::vector<std::string> messagesTypes;
 
 	private:
 		virtual void performWriteLine(std::string message, rang::fg color) = 0;

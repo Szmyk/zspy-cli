@@ -2,6 +2,8 @@
 
 #include "ILogger.h"
 
+#include <vector>
+
 class LoggerWithHighlighting : public ILogger
 {
 	private:
@@ -9,5 +11,5 @@ class LoggerWithHighlighting : public ILogger
 
 		void performWriteLine(std::string message, rang::fg color);
 	public:
-		LoggerWithHighlighting(std::string textToHighlight);
+		LoggerWithHighlighting(std::string textToHighlight, std::vector<std::string> messagesTypes);
 };

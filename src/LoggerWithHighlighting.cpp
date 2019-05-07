@@ -21,7 +21,8 @@ void LoggerWithHighlighting::performWriteLine(std::string message, rang::fg colo
 	}
 }
 
-LoggerWithHighlighting::LoggerWithHighlighting(std::string textToHighlight)
+LoggerWithHighlighting::LoggerWithHighlighting(std::string textToHighlight, std::vector<std::string> messagesTypes)
 {
 	this->textToHighlight = textToHighlight;
+	this->messagesTypes = messagesTypes;
 }

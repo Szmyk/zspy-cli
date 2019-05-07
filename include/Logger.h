@@ -2,7 +2,12 @@
 
 #include "ILogger.h"
 
+#include <vector>
+
 class Logger : public ILogger
 {
-	void performWriteLine(std::string message, rang::fg color);
+	private:
+		void performWriteLine(std::string message, rang::fg color);
+	public:
+		Logger(std::vector<std::string> messagesTypes);
 };

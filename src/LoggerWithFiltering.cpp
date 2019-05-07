@@ -8,7 +8,8 @@ void LoggerWithFiltering::performWriteLine(std::string message, rang::fg color)
 	}
 }
 
-LoggerWithFiltering::LoggerWithFiltering (std::string textToFilter)
+LoggerWithFiltering::LoggerWithFiltering (std::string textToFilter, std::vector<std::string> messagesTypes)
 {
 	this->textToFilter = textToFilter;
+	this->messagesTypes = messagesTypes;
 }
